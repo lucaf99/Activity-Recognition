@@ -13,7 +13,7 @@ query = "CREATE VIEW events_no_duplicates AS\
 try:
     cur.execute(query)
     print("Eseguito correttamente")
-except psycopg2.DataError as e:
+except psycopg2.DatabaseError as e:
     print(e)
 
 cur.close()
