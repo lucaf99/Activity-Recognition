@@ -1,6 +1,5 @@
 import psycopg2 as psycopg2
 
-from DataReduction import reduceData
 from ImagesCreation import createImages
 from config import config
 
@@ -16,7 +15,7 @@ try:
     db_version = cur.fetchone()
     print(db_version)
 
-    #reduceData(cur)  # Funzione riduzione numero dati
+    # reduceData(cur)  # Funzione riduzione numero dati
     createImages(cur)  # Funzione creazione immagini
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)

@@ -1,4 +1,3 @@
-
 def reduceData(cur):
     query = "CREATE VIEW events_no_duplicates AS\
             SELECT patient,time,sensor,value FROM\
@@ -9,4 +8,3 @@ def reduceData(cur):
 
     cur.execute(query)
     print("Eseguito correttamente")
-

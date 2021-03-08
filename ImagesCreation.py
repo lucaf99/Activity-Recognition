@@ -12,16 +12,23 @@ def createImages(cur):
     x = cur.fetchone()
     cur.execute(ymax)
     y = cur.fetchone()
-
     cur.execute(query)
     results = cur.fetchall()
     print("Eseguito correttamente")
 
-    im = Image.new('RGB', (int(x[0]+1), int(y[0]+1)), (255, 255, 255))
+    image_width = 100
+    image_height = 130
+
+    scaling_factor_x = image_width / x[0]
+    scaling_factor_y = image_height / y[0]
+
+    im = Image.new('RGB', (image_width, image_height), (255, 255, 255))
     draw = ImageDraw.Draw(im)
 
     i = 0
+
     while i < cur.rowcount - 1:
-        draw.line((results[i][0], results[i][1], results[i + 1][0], results[i + 1][1]), fill=0)
+        draw.line((results[i][0] * scaling_factor_x, results[i][1] * scaling_factor_y, results[i + 1][0] *
+                   scaling_factor_x, results[i + 1][1] * scaling_factor_y), fill=0)
         i = i + 1
     im.show()
