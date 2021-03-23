@@ -16,7 +16,12 @@ try:
     db_version = cur.fetchone()
     print(db_version)
 
-    #reduceData(cur)  # Funzione riduzione numero dati
+    queryEliminazioneVistaFirstSensors = "DROP VIEW IF EXISTS first_sensors"
+    cur.execute(queryEliminazioneVistaFirstSensors)
+    queryEliminazioneVista = "DROP VIEW IF EXISTS events_no_duplicates "
+    cur.execute(queryEliminazioneVista)
+
+    reduceData(cur)  # Funzione riduzione numero dati
     createImages(cur)  # Funzione creazione immagini
     conn.commit()
 except (Exception, psycopg2.DatabaseError) as error:
