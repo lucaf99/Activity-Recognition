@@ -16,10 +16,15 @@ try:
     db_version = cur.fetchone()
     print(db_version)
 
+    queryEliminazioneVistaUseObjectsPositions = "DROP VIEW IF EXISTS use_objects_positions"
+    cur.execute(queryEliminazioneVistaUseObjectsPositions)
+    queryEliminazioneVistaMovPosTempoUseObjectsPositions = "DROP VIEW IF EXISTS movimento_pos_tempo"
+    cur.execute(queryEliminazioneVistaMovPosTempoUseObjectsPositions)
     queryEliminazioneVistaFirstSensors = "DROP VIEW IF EXISTS first_sensors"
     cur.execute(queryEliminazioneVistaFirstSensors)
     queryEliminazioneVista = "DROP VIEW IF EXISTS events_no_duplicates "
     cur.execute(queryEliminazioneVista)
+
 
     reduceData(cur)  # Funzione riduzione numero dati
     createImages(cur)  # Funzione creazione immagini

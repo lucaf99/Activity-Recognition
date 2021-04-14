@@ -1,6 +1,9 @@
 # File Database
 database.ini
 
+# Cartelle
+/Images
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
