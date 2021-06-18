@@ -2,7 +2,7 @@
 database.ini
 
 # Cartelle
-/Images
+/content/Images
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,7 +1,7 @@
 import psycopg2 as psycopg2
 
 from ImagesCreation import createImages
-from Tesi.DataReduction import reduceData
+from DataReduction import reduceData
 from config import config
 
 conn = None
@@ -16,6 +16,10 @@ try:
     db_version = cur.fetchone()
     print(db_version)
 
+    queryEliminazioneTableSampleImages = "DROP TABLE IF EXISTS sample_images"
+    cur.execute(queryEliminazioneTableSampleImages)
+    queryEliminazioneTableImagesPatientsForActivity = "DROP TABLE IF EXISTS img_pts_for_activity"
+    cur.execute(queryEliminazioneTableImagesPatientsForActivity)
     queryEliminazioneVistaUseObjectsPositions = "DROP VIEW IF EXISTS use_objects_positions"
     cur.execute(queryEliminazioneVistaUseObjectsPositions)
     queryEliminazioneVistaMovPosTempoUseObjectsPositions = "DROP VIEW IF EXISTS movimento_pos_tempo"
